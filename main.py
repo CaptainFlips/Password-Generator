@@ -8,27 +8,45 @@ alphabet = [
     's','t','u','v','w','x','y','z'
 ]
 
-alphabet_and_symbols = [
-    'a','b','c','d','e','f','g','h','i',
-    'j','k','l','m','n','o','p','q','r',
-    's','t','u','v','w','x','y','z',
+symbols = [
     '{','}','(',')','[',']','#',':',';','^',
     ',','.','?','!','|','&','_','`','~','@',
     '$','%','/','\\','=','+','-','*','"',"'"
 ]
 
-symbol_choice = input('Would you like the password to include symbols? (Y or N) ')
+numbers = ['0','1','2','3','4','5','6','7','8','9']
+
+selected_characters = []
 
 while True:
-    if symbol_choice.upper() == 'Y' or symbol_choice.upper() == 'N':
+    letter_choice = input('\nWould you like the password to include letter? (Y or N) ')
+    if letter_choice.upper() == 'Y':
+        selected_characters += alphabet
+        break
+    elif letter_choice.upper() == 'N':
         break
     else:
-        symbol_choice = input('\nInvalid answer, answer with Y or N. ')
+        print('\nInvalid answer, try again. ')
 
-if symbol_choice.upper() == 'Y':
-    symbol_toggle = True
-else:
-    symbol_toggle = False
+while True:
+    number_choice = input('\nWould you like the password to include numbers? (Y or N) ')
+    if letter_choice.upper() == 'Y':
+        selected_characters += numbers
+        break
+    elif letter_choice.upper() == 'N':
+        break
+    else:
+        print('\nInvalid answer, try again. ')
+
+while True:
+    symbol_choice = input('\nWould you like the password to include symbols? (Y or N) ')
+    if letter_choice.upper() == 'Y':
+        selected_characters += symbols
+        break
+    elif letter_choice.upper() == 'N':
+        break
+    else:
+        print('\nInvalid answer, try again. ')
 
 while True:
     try:
@@ -37,17 +55,10 @@ while True:
     except ValueError:
         print('\nInvalid answer, try again')
 
-
-characters = 26
-if symbol_toggle == True:
-    characters += 30
-
 for i in range(lenght):
     case = secrets.randbelow(2)
-    if symbol_toggle == False:
-        character = secrets.choice(alphabet)
-    else:
-        character = secrets.choice(alphabet_and_symbols)
+
+    character = secrets.choice(selected_characters)
 
     if case == 1:
         character = character.upper()
