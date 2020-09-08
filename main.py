@@ -30,20 +30,20 @@ while True:
 
 while True:
     number_choice = input('\nWould you like the password to include numbers? (Y or N) ')
-    if letter_choice.upper() == 'Y':
+    if number_choice.upper() == 'Y':
         selected_characters += numbers
         break
-    elif letter_choice.upper() == 'N':
+    elif number_choice.upper() == 'N':
         break
     else:
         print('\nInvalid answer, try again. ')
 
 while True:
     symbol_choice = input('\nWould you like the password to include symbols? (Y or N) ')
-    if letter_choice.upper() == 'Y':
+    if symbol_choice.upper() == 'Y':
         selected_characters += symbols
         break
-    elif letter_choice.upper() == 'N':
+    elif symbol_choice.upper() == 'N':
         break
     else:
         print('\nInvalid answer, try again. ')
