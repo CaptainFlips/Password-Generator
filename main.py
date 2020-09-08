@@ -65,6 +65,6 @@ for i in range(lenght):
 
     password += character
 
-print('password:\n')
-print(password)
-print('')
+print('\npassword:')
+print('\t'*2+ password)
+input('\nPress ENTER to exit')
