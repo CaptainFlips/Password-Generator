@@ -19,41 +19,51 @@ numbers = ['0','1','2','3','4','5','6','7','8','9']
 selected_characters = []
 
 while True:
-    letter_choice = input('\nWould you like the password to include letter? (Y or N) ')
-    if letter_choice.upper() == 'Y':
-        selected_characters += alphabet
-        break
-    elif letter_choice.upper() == 'N':
-        break
-    else:
-        print('\nInvalid answer, try again. ')
 
-while True:
-    number_choice = input('\nWould you like the password to include numbers? (Y or N) ')
-    if number_choice.upper() == 'Y':
-        selected_characters += numbers
-        break
-    elif number_choice.upper() == 'N':
-        break
-    else:
-        print('\nInvalid answer, try again. ')
+    while True:
+        letter_choice = input('\nWould you like the password to include letter? (Y or N) ')
+        if letter_choice.upper() == 'Y':
+            selected_characters += alphabet
+            break
+        elif letter_choice.upper() == 'N':
+            break
+        else:
+            print('\nInvalid answer, try again. ')
 
-while True:
-    symbol_choice = input('\nWould you like the password to include symbols? (Y or N) ')
-    if symbol_choice.upper() == 'Y':
-        selected_characters += symbols
-        break
-    elif symbol_choice.upper() == 'N':
-        break
+    while True:
+        number_choice = input('\nWould you like the password to include numbers? (Y or N) ')
+        if number_choice.upper() == 'Y':
+            selected_characters += numbers
+            break
+        elif number_choice.upper() == 'N':
+            break
+        else:
+            print('\nInvalid answer, try again. ')
+
+    while True:
+        symbol_choice = input('\nWould you like the password to include symbols? (Y or N) ')
+        if symbol_choice.upper() == 'Y':
+            selected_characters += symbols
+            break
+        elif symbol_choice.upper() == 'N':
+            break
+        else:
+            print('\nInvalid answer, try again. ')
+
+
+    if len(selected_characters) == 0:
+        print('\nPlease select atleast one option.')
     else:
-        print('\nInvalid answer, try again. ')
+        break
 
 while True:
     try:
         lenght = int(input('\nHow long would you like the password to be? '))
-        break
+        if lenght > 0:
+            break
     except ValueError:
-        print('\nInvalid answer, try again')
+        pass
+    print('\nInvalid answer, try again')
 
 for i in range(lenght):
     case = secrets.randbelow(2)
