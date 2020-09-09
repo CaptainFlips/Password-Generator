@@ -21,7 +21,7 @@ selected_characters = []
 while True:
 
     while True:
-        letter_choice = input('\nWould you like the password to include letter? (Y or N) ')
+        letter_choice = input('\nWould you like the password to include letters? (Y or N) ')
         if letter_choice.upper() == 'Y':
             selected_characters += alphabet
             break
@@ -52,7 +52,7 @@ while True:
 
 
     if len(selected_characters) == 0:
-        print('\nPlease select atleast one option.')
+        print('\nPlease select at least one option.')
     else:
         break
 
