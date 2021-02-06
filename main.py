@@ -17,8 +17,24 @@ symbols = [
 numbers = ['0','1','2','3','4','5','6','7','8','9']
 
 selected_characters = []
+generator = 'password'
+
+secretsGenerator = secrets.SystemRandom()
 
 while True:
+
+    while True:
+        type_choice = input('\nWould you like the password or the number generator? (P or N) ')
+        if type_choice.upper() == 'N':
+            generator = 'number'
+            break
+        elif type_choice.upper() == 'P':
+            break
+        else:
+            print('\nInvalid answer, try again. ')
+
+    if generator == 'number':
+        break
 
     while True:
         letter_choice = input('\nWould you like the password to include letters? (Y or N) ')
@@ -56,25 +72,46 @@ while True:
     else:
         break
 
-while True:
-    try:
-        lenght = int(input('\nHow long would you like the password to be? '))
-        if lenght > 0:
-            break
-    except ValueError:
-        pass
-    print('\nInvalid answer, try again')
+if generator == 'number':
 
-for i in range(lenght):
-    case = secrets.randbelow(2)
+    while True:
+        try:
+            lenght = int(input('\nHow long would you like the number to be? '))
+            if lenght > 0:
+                break
+        except ValueError:
+            pass
+        print('\nInvalid answer, try again')
 
-    character = secrets.choice(selected_characters)
+    for i in range(lenght):
+        character = secretsGenerator.randint(0,9)
+        password += str(character)
 
-    if case == 1:
-        character = character.upper()
+    print('\nnumber:')
+    print('\t'*2+ password)
+    input('\nPress ENTER to exit')
 
-    password += character
+else:
 
-print('\npassword:')
-print('\t'*2+ password)
-input('\nPress ENTER to exit')
+    while True:
+        try:
+            lenght = int(input('\nHow long would you like the password to be? '))
+            if lenght > 0:
+                break
+        except ValueError:
+            pass
+        print('\nInvalid answer, try again')
+
+    for i in range(lenght):
+        case = secrets.randbelow(2)
+
+        character = secrets.choice(selected_characters)
+
+        if case == 1:
+            character = character.upper()
+
+        password += character
+
+    print('\npassword:')
+    print('\t'*2+ password)
+    input('\nPress ENTER to exit')
